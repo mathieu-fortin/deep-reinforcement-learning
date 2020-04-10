@@ -83,11 +83,23 @@ class Agent():
             experiences (Tuple[torch.Tensor]): tuple of (s, a, r, s', done) tuples 
             gamma (float): discount factor
         """
+        # obtain random minibatch of tuples (s,a,r,s)
         states, actions, rewards, next_states, dones = experiences
 
         ## TODO: compute and minimize the loss
         "*** YOUR CODE HERE ***"
-
+        # set target y = r + gamma * max q_hat(s, a, w) or y = r if done
+        q_targets_next = self.qnetwork_target(next_states).max(1)[0].unsqueeze(1)
+        q_targets = rewards + gamma * q_targets_next * (1 - dones)
+        
+        # perform a gradient descent step on (y - Q(phi_j, a_j, w))**2 wrt w
+        q_expected = self.qnetwork_local(states).gather(1, actions)
+        
+        loss = F.mse_loss(q_expected, q_targets)
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+        
         # ------------------- update target network ------------------- #
         self.soft_update(self.qnetwork_local, self.qnetwork_target, TAU)                     
 
