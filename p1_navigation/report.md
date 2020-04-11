@@ -22,8 +22,7 @@ The environment provides a feedback to the agent given a state S and an action A
 The aim for the agent is to learn the optimal policy which maximizes the reward, the agent is able to learn through repeated interaction with the environment.
 
 The algorithm, therefore, has a function that calculates the quality of a state-action combination:
-
-:<img src="q-learning.svg" width="75%" alt="Q-learning formula" title="Q-learning formula" />
+<img src="q-learning.svg" alt="Q-learning formula" title="Q-learning formula" />
 
 ### Score
 <img src="DQN_score.png" width="75%" alt="DQN Agent score" title="DQN Agent score" />
