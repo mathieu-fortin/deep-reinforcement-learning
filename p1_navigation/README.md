@@ -11,8 +11,8 @@ The reward scheme is defined as follow, the agent is rewarded by 1 point for eac
 The performance of the agent is assessed over 100 consecutive episodes, the agent is considered to have solved the environment if he achieves a score of 13 or more.
 
 ### See it in Action
-Check the notebook [Navigation-solution.ipynb](p1_navigation/Navigation-solution.ipynb) to see how the agent is instantiated and trained.
-<img src="p1_navigation/Unity-Bananas.gif" width="75%" alt="Unity Banana Agent" title="Unity Banana Agent" />
+Check the notebook [Navigation-solution.ipynb](Navigation-solution.ipynb) to see how the agent is instantiated and trained.
+<img src="Unity-Bananas.gif" width="75%" alt="Unity Banana Agent" title="Unity Banana Agent" />
 
 *Captured with OBS Studio*
 
