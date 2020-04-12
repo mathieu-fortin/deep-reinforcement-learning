@@ -39,4 +39,4 @@ This particular instance was developed on Win10 with unity 0.4
 
 ### Design & Approach
 The agent is a Deep Q-Network agent with experience replay.
-See [Report](Report.md) for more details
+See [Report](report.md) for more details
