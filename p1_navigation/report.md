@@ -2,7 +2,7 @@
 Udacity Deep Reinforcement Learning Nanodegree
 
 ## Deep Q-Network Agent learning on a Unity environment
-<img src="Unity-Bananas.gif" width="75%" alt="Unity Banana Agent" title="Unity Banana Agent" />
+<img src="assets/Unity-Bananas.gif" width="75%" alt="Unity Banana Agent" title="Unity Banana Agent" />
 
 ### Goal
 The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around agent's forward direction.  Given this information, the agent has to learn how to best select actions.  Four discrete actions are available, corresponding to:
@@ -14,7 +14,7 @@ The state space has 37 dimensions and contains the agent's velocity, along with 
 The task is episodic, and in order to solve the environment, your agent must get an average score of +13 over 100 consecutive episodes.
 
 ### Learning Algorithm
-The deep reinforcement learning algorithm implemted is the Deep Q-Network as described in this [paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+The deep reinforcement learning algorithm implemented is the Deep Q-Network as described in this [paper](https://www.nature.com/articles/nature14236)
 DQN is a special type of Q-learning algorithm it combines traditional Q-learning with deep neural networks.
 
 Q-Learning agents use a policy to decide which action to chose to interact with an environment.
@@ -23,17 +23,34 @@ The aim for the agent is to learn the optimal policy which maximizes the reward,
 
 The algorithm, therefore, has a function that calculates the quality of a state-action combination:
 
-<img src="q-learning.svg" alt="Q-learning formula" title="Q-learning formula" />
+<img src="assets/q-learning.svg" alt="Q-learning formula" title="Q-learning formula" />
 
 The optimal policy is defined by chosing the action which maximizes the Q-function for any given state.
-<img src="q-function.png" width="300" alt="Q-function formula" title="Q-function formula" />
+<img src="assets/q-function.png" width="300" alt="Q-function formula" title="Q-function formula" />
 
 The action-value function is updated iteratively using the Bellman equation
-<img src="q-learning-update.svg" alt="Q-learning update" title="Q-learning update" />
+<img src="assets/q-learning-update.svg" alt="Q-learning update" title="Q-learning update" />
 *source: wikipedia*
 
 This formula will maximize the q-function with respect to the actions and eventually make the Q table converge to the optimal policy
 It also introduces some **hyperparameters**, namely the learning rate alpha and the discount factor gamma.
+
+### Model Architecture
+The optimal action-value function is approximated using a Deep Neural Network or Deep Q-Network. In the original paper the architecture uses a multiple convolutional layers to process the video frames followed by a pair of fully connected layers.
+
+In our example given the limited size of the state domain and action domain, we forgo the convolutional layers and limit the DQN to simply two fully connected hidden layers of 64 neurons, RELU is applied to their output and a final output layer with the number of neurons matching the action domain (i.e. 4 neurons).
+
+The model architecture is defined in [model.py](model.py) and its console output looks as follow:
+```
+Deep Q-Network: QNetwork(
+  (fc1): Linear(in_features=37, out_features=64, bias=True)
+  (fc2): Linear(in_features=64, out_features=64, bias=True)
+  (fc3): Linear(in_features=64, out_features=4, bias=True)
+)
+```
+
+<img src="assets/neural-network.png" alt="neural-network" title="neural-network" />
+source: [nature.com](https://www.nature.com/articles/nature14236)
 
 ### Hyperparameters
 We have already seen two hyperparameters introduced in the q-function.
@@ -48,6 +65,7 @@ The algorithm implemented here also uses a 𝛆-greedy policy which allows chosi
 
 One last hyperparamter introduced in this implementation is the size the experience replay buffer.
 
+
 ### Experience Replay
 We introduce an experience buffer in which we store the tuple of state, action, reward and next state. This has multiple benefits, some experiences may be rare of costly to reproduce.
 
@@ -55,7 +73,7 @@ We then sample randomly from this buffer to learn, which can allows the agent to
 This helps prevent correlation between samples and ultimately prevent the action value from oscillating or diverging.
 
 ### Score
-<img src="DQN_score.png" width="75%" alt="DQN Agent score" title="DQN Agent score" />
+<img src="assets/DQN_score.png" width="75%" alt="DQN Agent score" title="DQN Agent score" />
 
 ### Ideas for future work
 The current implementation of DQN introduces experience replay as one known optimization of DQN.
