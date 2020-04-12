@@ -25,7 +25,7 @@ The algorithm, therefore, has a function that calculates the quality of a state-
 
 <img src="q-learning.svg" alt="Q-learning formula" title="Q-learning formula" />
 
-The optimal policy is thus defined as chosing the action which maximizes the Q-function for any given state.
+The optimal policy is defined by chosing the action which maximizes the Q-function for any given state.
 <img src="q-function.png" width="300" alt="Q-function formula" title="Q-function formula" />
 
 The action-value function is updated iteratively using the Bellman equation
@@ -38,7 +38,7 @@ It also introduces some **hyperparameters**, namely the learning rate alpha and 
 ### Hyperparameters
 We have already seen two hyperparameters introduced in the q-function.
 
-The learning rate controls the speed at which the q-values are updated, a small alpha will the learning slower but also less prone to non-convergence.
+The learning rate controls the speed at which the q-values are updated, a small alpha will make the learning slower but also less prone to non-convergence.
 
 The discount factor controls the importance of future rewards. A well balanced gamma will help ensure that future rewards are taken into account in finding the optimal policy and prevent convergence to a suboptimal local optimum focused on short term reward only.
 
