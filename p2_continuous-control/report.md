@@ -6,6 +6,9 @@ The goal in this environment is to control a double-jointed arm and move it to t
 A reward of +0.1 is provided for each step that the agent's hand is in the goal location.
 Thus, the goal of the agent is to maintain its position at the target location for as many time steps as possible.
 
+<img src="assets/control.gif" width="75%" alt="Unity Control Agent" title="Unity Control Agent" />
+
+
 ## Learning Algorithm
 Deep Deterministic Policy Agent, or DDPG, is an off-policy reinforcement learning algorithm targeted to environment with continous action space.
 DDPG is built with an Actor-Critic architecture where both the policy and the value function are estimated with a neural network.
@@ -36,9 +39,14 @@ Both the Actor and the Critic are optimized using Adam Optimizer.
 
 
 The environment is solved using 20 simultaneous agents, all agents share the same ReplayBuffer from which experiences are sampled.
-At the end of each episode the network weights of the best agent is broadcasted to the other agents.
+As for the networks I have tried different approaches:
+* Collaborative competing agents, where the end of each episode the network weights of the best agent is broadcasted to the other agents.
+* Collaborative agents, where the agents share the same four actor/critic local/target networks
+
+I have found the latter to train faster although further study would be needed to compare the stability and speed of the two approaches, as well as others.
 
 ## Plot of rewards
+<img src="assets/ddpg-control.png" width="75%" alt="DDPG reward" title="DDPG reward" />
 
 ## Ideas for future work
 Besides using other learning algorithm such as PPO, D4PG, A3C; several attemps can be made to further improve the performence of DDPG:
