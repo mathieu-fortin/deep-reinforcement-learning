@@ -55,7 +55,7 @@ SIGMA = 0.2             # Ornstein-Uhlenbeck noise parameter
 ```
 
 ### Plot of rewards
-<img src="assets/scores.png" width="100%" alt="MADDPG reward" title="MADDPG reward" />
+<img src="assets/p3_scores.png" width="75%" alt="MADDPG reward" title="MADDPG reward" />
 
 ### Ideas for future work
 Beside hyper-parameter tuning (e.g. network size, noise, buffer size) other improvement should be explored:
