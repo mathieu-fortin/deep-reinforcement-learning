@@ -105,3 +105,6 @@ ENV/
 p1_navigation/banana
 p2_continuous-control/Reacher_one_Windows_x86_64
 p2_continuous-control/Reacher_multi_Windows_x86_64
+maddpg/
+*/bak/
+p3_collab-compet/Tennis_Windows_x86_64
